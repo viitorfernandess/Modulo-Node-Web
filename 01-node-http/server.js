@@ -1,19 +1,26 @@
 // Importa o módulo HTTP do Node.js
 const http = require('node:http')
 
-// Cria o servidor HTTP e define a função para lidar com as requisições
+// server.js
 const server = http.createServer((request, response) => {
-    // Imprime no console o objeto da requisição recebida
-    console.log(request)
+  const path = request.url
 
-    // Define o status da resposta HTTP como 200 (OK)
-    response.writeHead(200)
+  switch (path) {
+    case '/':
+      response.writeHead(200)
+      response.write('Você está na página inicial!')
+      break;
+    case '/artigos':
+      response.writeHead(200)
+      response.write('Você está na página "artigos"!')
+      break;
+    default:
+      response.writeHead(404)
+      response.write('Caminho não encontrado!')
+      break;
+  }
 
-    // Envia o corpo da resposta com uma mensagem simples
-    response.write('Servidor HTTP em Node.js funcionando!')
-
-    // Finaliza a resposta (obrigatório para indicar que a resposta está completa)
-    response.end()
+  response.end()
 })
 
 const PORT = (3000)
