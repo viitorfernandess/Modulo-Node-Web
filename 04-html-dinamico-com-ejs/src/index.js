@@ -2,6 +2,9 @@ const express = require('express')
 const path = require('node:path')
 
 const app = express()
+
+storedUsers = []
+
 //Configuração do EJS
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
@@ -21,7 +24,7 @@ app.get('/formulario', (req, res) => {
 
 app.post('/register', (req, res) => {
     const username = req.body.username
-    console.log(req.body)
+    
 
     res.send()
 })
