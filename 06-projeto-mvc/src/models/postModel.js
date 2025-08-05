@@ -26,12 +26,12 @@ const postModel = {
     },
 
     updatePost(id, updatedPost) {
-const index = posts.findIndex(post => post.id === id)
-posts[index] = { ...posts[index], ...updatedPost, updatedAt: new Date()}
+        const index = posts.findIndex(post => post.id === id)
+        posts[index] = { ...posts[index], ...updatedPost, updatedAt: new Date() }
     },
 
     deletePost(id) {
-posts = posts.filter(post.id !== id)
+        posts = posts.filter(post => post.id !== id)
     }
 }
 
