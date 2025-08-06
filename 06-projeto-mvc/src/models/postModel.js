@@ -1,4 +1,6 @@
-let posts = []
+let posts = [ { id: "1", title: 'Teste 1', content: 'Lorem ipsum...', createdAt: new Date(), updatedAt: new Date()},
+     { id:"2", title: 'Teste  2', content: 'Lorem ipsum...', createdAt: new Date(), updatdAt: new Date()}
+]
 
 // Post { id, title, content, creatAt, updateAt}
 const postModel = {
@@ -6,7 +8,7 @@ const postModel = {
         return posts
     },
 
-    getPostsById(id) {
+    getPostById(id) {
         return posts.find(post => post.id == id)
     },
 
@@ -22,7 +24,7 @@ const postModel = {
     },
 
     savePost(post) {
-        posts.push(post)
+        posts.unshift(post)
     },
 
     updatePost(id, updatedPost) {
