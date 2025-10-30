@@ -20,7 +20,7 @@ module.exports = {
         }
 
         const newUser = { username, password }
-        user.push(newUser)
+        users.push(newUser)
         res.redirect('/dashboard')
 
     }
