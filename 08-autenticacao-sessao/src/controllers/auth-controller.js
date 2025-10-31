@@ -22,9 +22,23 @@ module.exports = {
         const newUser = { username, password }
         users.push(newUser)
         res.redirect('/dashboard')
+    },
 
-    }
     // POST /auth/login
+    login: (req, res) => {
+        const { username, password } = req.body
 
+        const user = users.find(user => user.username === username)
+
+        if (!user) {
+            return res.redirect('/')
+        }
+
+        if (password !== user.password) {
+            return res.redirect('/')
+        }
+
+        res.redirect('/dashboard')
+    }
     // GET /auth/logout
 }
