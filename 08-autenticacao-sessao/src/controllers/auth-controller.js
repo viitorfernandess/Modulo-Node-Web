@@ -38,6 +38,9 @@ module.exports = {
             return res.redirect('/')
         }
 
+        req.session.authenticated = true
+        req.session.currentUser = user
+
         res.redirect('/dashboard')
     }
     // GET /auth/logout
