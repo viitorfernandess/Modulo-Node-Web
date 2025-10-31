@@ -42,6 +42,11 @@ module.exports = {
         req.session.currentUser = user
 
         res.redirect('/dashboard')
-    }
+    },
     // GET /auth/logout
+    logout: (req,res) => {
+        req.session.authenticated = false
+        req.session.currentUser = null 
+        res.redirect('/')
+    }
 }

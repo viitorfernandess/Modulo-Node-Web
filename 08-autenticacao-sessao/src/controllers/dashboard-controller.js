@@ -6,6 +6,6 @@ module.exports = {
         }
         console.log(req.session.authenticated)
         console.log(req.session.currentUser)
-        res.render('dashboard', { user: { username: 'Teste' } })
+        res.render('dashboard', { user: req.session.currentUser })
     }
 }
