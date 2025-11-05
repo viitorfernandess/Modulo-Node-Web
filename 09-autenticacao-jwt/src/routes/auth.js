@@ -16,6 +16,8 @@ authRouter.post('/register', (req, res) => {
 })
 
 authRouter.post('/login', (req, res) => {
+    console.log('HEADERS:', req.headers)
+    console.log('BODY:', req.body)
     const { username, password } = req.body
 
     const user = users.find(user => user.username === username)

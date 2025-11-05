@@ -1,5 +1,3 @@
-const users = [
-    { username: 'vitor', password: '123456' }
-]
+const users = [ ]
 
 module.exports = users
