@@ -5,6 +5,7 @@ const express = require('express')
 const authRouter = express.Router()
 
 const users = require('../models/users')
+const jwt =  require('jsonwebtoken')
 
 authRouter.post('/register', (req, res) => {
     const { username, password } = req.body
@@ -16,8 +17,6 @@ authRouter.post('/register', (req, res) => {
 })
 
 authRouter.post('/login', (req, res) => {
-    console.log('HEADERS:', req.headers)
-    console.log('BODY:', req.body)
     const { username, password } = req.body
 
     const user = users.find(user => user.username === username)
