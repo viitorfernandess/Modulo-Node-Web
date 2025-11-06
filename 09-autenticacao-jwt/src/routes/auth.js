@@ -4,8 +4,10 @@ const express = require('express')
 // Cria um "roteador" (Router) — uma mini-instância do Express usada para organizar rotas
 const authRouter = express.Router()
 
+const secretKey = 'palavra-chave-super-secreta'
+
 const users = require('../models/users')
-const jwt =  require('jsonwebtoken')
+const jwt = require('jsonwebtoken')
 
 authRouter.post('/register', (req, res) => {
     const { username, password } = req.body
@@ -24,7 +26,11 @@ authRouter.post('/login', (req, res) => {
         return res.status(401).json({ message: 'Credenciais inválidas' })
     }
 
-    res.json({})
+    const token = jwt.sign({ message: 'teste' }, secretKey, {
+        expiresIn: '1h'
+    })
+
+    res.json({ token })
 })
 
 // Exporta o roteador para que ele possa ser importado e usado em outro arquivo (ex: server.js)
