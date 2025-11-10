@@ -26,7 +26,7 @@ authRouter.post('/login', (req, res) => {
         return res.status(401).json({ message: 'Credenciais inválidas' })
     }
 
-    const payload = { message: 'teste' }
+    const payload = { username }
 
     const token = jwt.sign(payload, secretKey, { expiresIn: '1h' })
 

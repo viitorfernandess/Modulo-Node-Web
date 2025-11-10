@@ -13,7 +13,14 @@ const authMiddleware = (req, res, next) => {
 
     try {
         const decodedToken = jwt.verify(token, secretKey)
-        console.log(decodedToken)
+
+        const user = req.user = users.find(user => user.username === decodedToken.username)
+        if (!user) {
+            return res.status(401).json({ message: 'Usuário inválido' })
+        }
+
+        req.authenticatedUser = user
+
         next()
     } catch (error) {
         return res.status(401).json({ message: 'Token inválido' })
