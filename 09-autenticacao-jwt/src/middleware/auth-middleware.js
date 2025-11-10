@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken')
+const users = require('../models/users')
 
 const secretKey = 'palavra-chave-super-secreta'
 
@@ -14,7 +15,7 @@ const authMiddleware = (req, res, next) => {
     try {
         const decodedToken = jwt.verify(token, secretKey)
 
-        const user = req.user = users.find(user => user.username === decodedToken.username)
+        const user = users.find(user => user.username === decodedToken.username)
         if (!user) {
             return res.status(401).json({ message: 'Usuário inválido' })
         }

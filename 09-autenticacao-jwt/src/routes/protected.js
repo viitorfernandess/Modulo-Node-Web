@@ -6,7 +6,8 @@ const authMiddleware = require('../middleware/auth-middleware')
 const protectedRouter = express.Router()
 
 protectedRouter.get('/dashboard',authMiddleware, (req, res) => {
-    res.json({ message: 'Esta é a área protegida'})
+    const username = req.authenticatedUser.username
+    res.json({ message: `Esta é a área protegida. Bem vindo(a), ${username}`})
 })
 
 // Exporta o roteador para que ele possa ser importado e usado em outro arquivo (ex: server.js)
